@@ -1,0 +1,256 @@
+{
+  "verified": true,
+  "factor": "whole_stack",
+  "job_id": "cache-v8-r3-20261103",
+  "summary": {
+    "run_id": "20261103-cache-v8-r3",
+    "operations_per_trial": 3024,
+    "correctness_passed": true,
+    "repeats_complete": true,
+    "performance_gain_proven": false,
+    "summary": {
+      "native": {
+        "measured_trials": 3,
+        "seconds": [
+          34.075748874020064,
+          34.698185447981814,
+          32.920993250008905
+        ],
+        "median_seconds": 34.075748874020064,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "verified": true,
+        "median_counters": {
+          "host_read_bytes": 12648448,
+          "host_write_bytes": 22189056,
+          "ssd_interface_total_bytes": 34837504,
+          "storage_pod_tx_bytes": 13902160,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "device_conversions": 0,
+          "all_counted_bytes": 34837504
+        },
+        "drained_counters": {
+          "host_read_bytes": 12849152,
+          "host_write_bytes": 22532608,
+          "ssd_interface_total_bytes": 35381760,
+          "storage_pod_tx_bytes": 14118032,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "device_conversions": 0,
+          "all_counted_bytes": 35381760
+        },
+        "replay_plus_drain_seconds": 34.638759582012426,
+        "compaction_policy": {
+          "mode": "local",
+          "minimum_remote_bytes": 4194304,
+          "local_jobs": [
+            0,
+            0,
+            0
+          ],
+          "selected_remote_jobs": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "previous": {
+        "measured_trials": 3,
+        "seconds": [
+          45.1987150220084,
+          45.1498819339904,
+          39.8848805759917
+        ],
+        "median_seconds": 45.1498819339904,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "verified": true,
+        "median_counters": {
+          "host_read_bytes": 18538496,
+          "host_write_bytes": 16296960,
+          "ssd_interface_total_bytes": 34835456,
+          "storage_pod_tx_bytes": 6648254,
+          "internal_read_bytes": 1048576,
+          "internal_write_bytes": 262144,
+          "device_conversions": 4,
+          "all_counted_bytes": 36146176
+        },
+        "drained_counters": {
+          "host_read_bytes": 18923520,
+          "host_write_bytes": 16585728,
+          "ssd_interface_total_bytes": 35509248,
+          "storage_pod_tx_bytes": 6729300,
+          "internal_read_bytes": 1048576,
+          "internal_write_bytes": 262144,
+          "device_conversions": 4,
+          "all_counted_bytes": 36819968
+        },
+        "replay_plus_drain_seconds": 46.4721001140133,
+        "compaction_policy": {
+          "mode": "size_threshold",
+          "minimum_remote_bytes": 4194304,
+          "local_jobs": [
+            4,
+            4,
+            4
+          ],
+          "selected_remote_jobs": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "optimized": {
+        "measured_trials": 3,
+        "seconds": [
+          35.72099221200915,
+          34.83543108799495,
+          32.20727645201259
+        ],
+        "median_seconds": 34.83543108799495,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "verified": true,
+        "median_counters": {
+          "host_read_bytes": 9673728,
+          "host_write_bytes": 16835584,
+          "ssd_interface_total_bytes": 27161600,
+          "storage_pod_tx_bytes": 5933430,
+          "internal_read_bytes": 2097152,
+          "internal_write_bytes": 524288,
+          "device_conversions": 8,
+          "all_counted_bytes": 30339072
+        },
+        "drained_counters": {
+          "host_read_bytes": 9980928,
+          "host_write_bytes": 17136640,
+          "ssd_interface_total_bytes": 27864064,
+          "storage_pod_tx_bytes": 6103090,
+          "internal_read_bytes": 2097152,
+          "internal_write_bytes": 524288,
+          "device_conversions": 8,
+          "all_counted_bytes": 30992896
+        },
+        "replay_plus_drain_seconds": 36.5587799679779,
+        "compaction_policy": {
+          "mode": "size_threshold",
+          "minimum_remote_bytes": 4194304,
+          "local_jobs": [
+            5,
+            5,
+            5
+          ],
+          "selected_remote_jobs": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "limits": [
+      "FEMU模拟设备上的本轮观察，不代表真实SSD性能。",
+      "原始RAID5先测，ScalaFusion两组交错；两套保留文件系统的分配历史不同。",
+      "每节点缓存有效数据上限4 MiB，索引等内存开销另计。",
+      "回放耗时不包含前置准备及后续验证，排空耗时另列。",
+      "后续核查发现旧准备阶段未锁定本轮 HDFS 输入块身份；业务读回与接口计数有记录，精确物理放置证据需新流程复核。"
+    ],
+    "preconditioning_notes": [
+      "每组预热1轮、正式3轮；正式轮逐指标取中位数。",
+      "相同3024条操作轨迹、SDK和持久化要求；每轮回放前syncfs。"
+    ]
+  },
+  "acceptance": {
+    "current_three_group": {
+      "passed": true,
+      "groups": 3,
+      "formal_trials": 3
+    },
+    "restored_original": {
+      "passed": true,
+      "cold_cache_reopen": true
+    },
+    "final_parity_scrub": {
+      "checked_stripes": 3325,
+      "mismatches": 0,
+      "passed": true
+    }
+  },
+  "trials": [
+    {
+      "mode": "native",
+      "trial": 1,
+      "seconds": 34.075748874020064,
+      "drain_seconds": 0.5630107079923619,
+      "correct": true
+    },
+    {
+      "mode": "native",
+      "trial": 2,
+      "seconds": 34.698185447981814,
+      "drain_seconds": 0.4948945179930888,
+      "correct": true
+    },
+    {
+      "mode": "native",
+      "trial": 3,
+      "seconds": 32.920993250008905,
+      "drain_seconds": 0.52165367899579,
+      "correct": true
+    },
+    {
+      "mode": "candidate",
+      "trial": 1,
+      "seconds": 35.72099221200915,
+      "drain_seconds": 1.464290418982273,
+      "correct": true
+    },
+    {
+      "mode": "original",
+      "trial": 1,
+      "seconds": 45.1987150220084,
+      "drain_seconds": 1.469601144985063,
+      "correct": true
+    },
+    {
+      "mode": "original",
+      "trial": 2,
+      "seconds": 45.1498819339904,
+      "drain_seconds": 1.322218180022901,
+      "correct": true
+    },
+    {
+      "mode": "candidate",
+      "trial": 2,
+      "seconds": 34.83543108799495,
+      "drain_seconds": 1.7233488799829502,
+      "correct": true
+    },
+    {
+      "mode": "candidate",
+      "trial": 3,
+      "seconds": 32.20727645201259,
+      "drain_seconds": 1.6005966009979602,
+      "correct": true
+    },
+    {
+      "mode": "original",
+      "trial": 3,
+      "seconds": 39.8848805759917,
+      "drain_seconds": 1.8768545819912106,
+      "correct": true
+    }
+  ]
+}
