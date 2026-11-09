@@ -1,0 +1,679 @@
+{
+  "job_id": "sf-1cb93d06b9a7eb6c6554a6c07a225223",
+  "state": "done",
+  "factor": "whole_stack",
+  "verified": true,
+  "qualified": true,
+  "summary": {
+    "run_id": "20261109-scale100-1cb93d06",
+    "operations_per_trial": 302400,
+    "correctness_passed": true,
+    "repeats_complete": true,
+    "performance_gain_proven": true,
+    "summary": {
+      "native": {
+        "measured_trials": 3,
+        "seconds": [
+          1997.153857316007,
+          2037.0024854490184,
+          1886.7934798529604
+        ],
+        "median_seconds": 1997.153857316007,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "verified": true,
+        "median_counters": {
+          "host_read_bytes": 1447276544,
+          "host_write_bytes": 2247997440,
+          "ssd_interface_total_bytes": 3695273984,
+          "storage_pod_tx_bytes": 1587720364,
+          "device_conversions": 0,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "read_including_internal_bytes": 1447276544
+        }
+      },
+      "common_jvm": {
+        "measured_trials": 3,
+        "seconds": [
+          1946.1912952969433,
+          1828.3884418759844,
+          2153.7046352059697
+        ],
+        "median_seconds": 1946.1912952969433,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "verified": true,
+        "median_counters": {
+          "host_read_bytes": 1417617408,
+          "host_write_bytes": 2204823552,
+          "ssd_interface_total_bytes": 3622440960,
+          "storage_pod_tx_bytes": 1555547787,
+          "device_conversions": 0,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "read_including_internal_bytes": 1417617408
+        }
+      },
+      "optimized": {
+        "measured_trials": 3,
+        "seconds": [
+          1333.8095872800332,
+          1349.8691629779642,
+          1333.1548815860297
+        ],
+        "median_seconds": 1333.8095872800332,
+        "remote_compactions": [
+          9,
+          9,
+          9
+        ],
+        "verified": true,
+        "median_counters": {
+          "host_read_bytes": 991754752,
+          "host_write_bytes": 1584242176,
+          "ssd_interface_total_bytes": 2623962112,
+          "storage_pod_tx_bytes": 553975085,
+          "device_conversions": 241,
+          "internal_read_bytes": 63176704,
+          "internal_write_bytes": 15794176,
+          "read_including_internal_bytes": 1066867200
+        }
+      }
+    },
+    "completed_at": 1794163325.8929338
+  },
+  "acceptance": {
+    "exact_kv": {
+      "passed": true,
+      "live_keys": 175500,
+      "sha256": "6886679581b09ad6bc09f886d9d2b0199095917974bc3d1fe52e05a00f6fef2b"
+    },
+    "current_three_group": {
+      "passed": true,
+      "groups": 3,
+      "formal_trials": 9
+    },
+    "final_parity_scrub": {
+      "checked_stripes": 7161,
+      "mismatches": 0,
+      "passed": true
+    },
+    "cold_cache_readback": {
+      "passed": true,
+      "databases": 1
+    },
+    "general_service_unchanged": {
+      "passed": true
+    }
+  },
+  "raw_evidence": {
+    "workload": {
+      "scale": 100,
+      "operations": 302400,
+      "writes": 273100,
+      "deletes": 29300,
+      "live_keys": 175500,
+      "value_bytes": 512,
+      "logical_written_bytes": 139827200,
+      "logical_final_bytes": 89856000,
+      "digest": "6886679581b09ad6bc09f886d9d2b0199095917974bc3d1fe52e05a00f6fef2b",
+      "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+      "construction": "Disjoint keys per shard, round-robin at every original operation; original values, key length, and order within a shard retained"
+    },
+    "rows": [
+      {
+        "mode": "native_original",
+        "profile": "native",
+        "trial": 0,
+        "warmup": true,
+        "correct": true,
+        "seconds": 2590.502724929014,
+        "total_seconds": 2593.0409747420345,
+        "drain_seconds": 0.9474068739800714,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1438511104,
+          "write_bytes": 2298554880,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3737065984,
+          "all_counted_bytes": 3737065984,
+          "storage_pod_tx_bytes": 1579857951
+        },
+        "drained_counters": {
+          "read_bytes": 1438638080,
+          "write_bytes": 2298908672,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3737546752,
+          "all_counted_bytes": 3737546752,
+          "storage_pod_tx_bytes": 1580007535
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_original",
+        "profile": "native",
+        "trial": 1,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1994.5985836249893,
+        "total_seconds": 1997.153857316007,
+        "drain_seconds": 0.97077311394969,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1447362560,
+          "write_bytes": 2250273792,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3697636352,
+          "all_counted_bytes": 3697636352,
+          "storage_pod_tx_bytes": 1587511044
+        },
+        "drained_counters": {
+          "read_bytes": 1447550976,
+          "write_bytes": 2250649600,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3698200576,
+          "all_counted_bytes": 3698200576,
+          "storage_pod_tx_bytes": 1587720364
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_original",
+        "profile": "native",
+        "trial": 2,
+        "warmup": false,
+        "correct": true,
+        "seconds": 2034.610447729996,
+        "total_seconds": 2037.0024854490184,
+        "drain_seconds": 0.9063615429913625,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1447149568,
+          "write_bytes": 2247687168,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3694836736,
+          "all_counted_bytes": 3694836736,
+          "storage_pod_tx_bytes": 1588403886
+        },
+        "drained_counters": {
+          "read_bytes": 1447276544,
+          "write_bytes": 2247997440,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3695273984,
+          "all_counted_bytes": 3695273984,
+          "storage_pod_tx_bytes": 1588551928
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_original",
+        "profile": "native",
+        "trial": 3,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1884.1962852890138,
+        "total_seconds": 1886.7934798529604,
+        "drain_seconds": 0.9688375939731486,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1444151296,
+          "write_bytes": 2227423232,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3671574528,
+          "all_counted_bytes": 3671574528,
+          "storage_pod_tx_bytes": 1584238952
+        },
+        "drained_counters": {
+          "read_bytes": 1444278272,
+          "write_bytes": 2227774464,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3672052736,
+          "all_counted_bytes": 3672052736,
+          "storage_pod_tx_bytes": 1584384200
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_common_jvm",
+        "profile": "native",
+        "trial": 0,
+        "warmup": true,
+        "correct": true,
+        "seconds": 1943.8729773070081,
+        "total_seconds": 1946.5708529960248,
+        "drain_seconds": 1.1776684650103562,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1444651008,
+          "write_bytes": 2248030208,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3692681216,
+          "all_counted_bytes": 3692681216,
+          "storage_pod_tx_bytes": 1585025136
+        },
+        "drained_counters": {
+          "read_bytes": 1444913152,
+          "write_bytes": 2248822272,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3693735424,
+          "all_counted_bytes": 3693735424,
+          "storage_pod_tx_bytes": 1585333024
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_common_jvm",
+        "profile": "native",
+        "trial": 1,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1943.6361020780168,
+        "total_seconds": 1946.1912952969433,
+        "drain_seconds": 0.889236482034903,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1417535488,
+          "write_bytes": 2204524544,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3622060032,
+          "all_counted_bytes": 3622060032,
+          "storage_pod_tx_bytes": 1555448863
+        },
+        "drained_counters": {
+          "read_bytes": 1417617408,
+          "write_bytes": 2204823552,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3622440960,
+          "all_counted_bytes": 3622440960,
+          "storage_pod_tx_bytes": 1555547787
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_common_jvm",
+        "profile": "native",
+        "trial": 2,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1825.7417769859894,
+        "total_seconds": 1828.3884418759844,
+        "drain_seconds": 1.0188892429578118,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1433583616,
+          "write_bytes": 2218396160,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3651979776,
+          "all_counted_bytes": 3651979776,
+          "storage_pod_tx_bytes": 1572643018
+        },
+        "drained_counters": {
+          "read_bytes": 1433817088,
+          "write_bytes": 2218763776,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3652580864,
+          "all_counted_bytes": 3652580864,
+          "storage_pod_tx_bytes": 1572900844
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "native_common_jvm",
+        "profile": "native",
+        "trial": 3,
+        "warmup": false,
+        "correct": true,
+        "seconds": 2150.899944365956,
+        "total_seconds": 2153.7046352059697,
+        "drain_seconds": 0.9899811510113068,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "b45318335242291fc6e1781647a67c4588ffb60add22af1f11e5ed1bcbcea228",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1402867712,
+          "write_bytes": 2184144384,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3587012096,
+          "all_counted_bytes": 3587012096,
+          "storage_pod_tx_bytes": 1539640582
+        },
+        "drained_counters": {
+          "read_bytes": 1402929152,
+          "write_bytes": 2184326656,
+          "internal_read_bytes": 0,
+          "internal_write_bytes": 0,
+          "conversions": 0,
+          "interface_total_bytes": 3587255808,
+          "all_counted_bytes": 3587255808,
+          "storage_pod_tx_bytes": 1539714466
+        },
+        "remote_compactions": 0,
+        "selected_remote_compactions": 0
+      },
+      {
+        "mode": "candidate",
+        "profile": "optimized",
+        "trial": 0,
+        "warmup": true,
+        "correct": true,
+        "seconds": 1270.111501751002,
+        "total_seconds": 1274.3110029570526,
+        "drain_seconds": 2.145609467988834,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "25d146c7a4a765cebc3c168800b78bb6df7dbb33aad3c377acdec3c360612463",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 771241984,
+          "write_bytes": 1871409152,
+          "internal_read_bytes": 306970624,
+          "internal_write_bytes": 76742656,
+          "conversions": 1171,
+          "interface_total_bytes": 2642651136,
+          "all_counted_bytes": 3026364416,
+          "storage_pod_tx_bytes": 422927837
+        },
+        "drained_counters": {
+          "read_bytes": 771971584,
+          "write_bytes": 1872277504,
+          "internal_read_bytes": 306970624,
+          "internal_write_bytes": 76742656,
+          "conversions": 1171,
+          "interface_total_bytes": 2644249088,
+          "all_counted_bytes": 3027962368,
+          "storage_pod_tx_bytes": 423305283
+        },
+        "remote_compactions": 9,
+        "selected_remote_compactions": 9
+      },
+      {
+        "mode": "candidate",
+        "profile": "optimized",
+        "trial": 1,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1329.6706149519887,
+        "total_seconds": 1333.8095872800332,
+        "drain_seconds": 2.1282494839979336,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "25d146c7a4a765cebc3c168800b78bb6df7dbb33aad3c377acdec3c360612463",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 945917952,
+          "write_bytes": 1676246528,
+          "internal_read_bytes": 120061952,
+          "internal_write_bytes": 30015488,
+          "conversions": 458,
+          "interface_total_bytes": 2622164480,
+          "all_counted_bytes": 2772241920,
+          "storage_pod_tx_bytes": 542625636
+        },
+        "drained_counters": {
+          "read_bytes": 946805248,
+          "write_bytes": 1677156864,
+          "internal_read_bytes": 120061952,
+          "internal_write_bytes": 30015488,
+          "conversions": 458,
+          "interface_total_bytes": 2623962112,
+          "all_counted_bytes": 2774039552,
+          "storage_pod_tx_bytes": 543150125
+        },
+        "remote_compactions": 9,
+        "selected_remote_compactions": 9
+      },
+      {
+        "mode": "candidate",
+        "profile": "optimized",
+        "trial": 2,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1345.686292636965,
+        "total_seconds": 1349.8691629779642,
+        "drain_seconds": 2.093571064993739,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "25d146c7a4a765cebc3c168800b78bb6df7dbb33aad3c377acdec3c360612463",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 991019008,
+          "write_bytes": 1551202304,
+          "internal_read_bytes": 63176704,
+          "internal_write_bytes": 15794176,
+          "conversions": 241,
+          "interface_total_bytes": 2542221312,
+          "all_counted_bytes": 2621192192,
+          "storage_pod_tx_bytes": 553582016
+        },
+        "drained_counters": {
+          "read_bytes": 991754752,
+          "write_bytes": 1552065536,
+          "internal_read_bytes": 63176704,
+          "internal_write_bytes": 15794176,
+          "conversions": 241,
+          "interface_total_bytes": 2543820288,
+          "all_counted_bytes": 2622791168,
+          "storage_pod_tx_bytes": 553975085
+        },
+        "remote_compactions": 9,
+        "selected_remote_compactions": 9
+      },
+      {
+        "mode": "candidate",
+        "profile": "optimized",
+        "trial": 3,
+        "warmup": false,
+        "correct": true,
+        "seconds": 1329.1272639310337,
+        "total_seconds": 1333.1548815860297,
+        "drain_seconds": 2.1827208679751493,
+        "trace_sha256": "6f4f6c68cda6cce9ef726a060b0a76321198e6151b6906b328603901ed1b43ec",
+        "input_sha256": "6d6c3d401282467c06121a8907c2538b125a6ac45de14a537f4f89e1c040da53",
+        "sdk_library_sha256": "6b2143552444779f7f96b8f61a9e161cc3233ef7bc4c690eb75e9b5fc9376af5",
+        "sdk_helper_sha256": "25d146c7a4a765cebc3c168800b78bb6df7dbb33aad3c377acdec3c360612463",
+        "wal_bytes": 143813200,
+        "flushes": 2363,
+        "counters": {
+          "read_bytes": 1067433472,
+          "write_bytes": 1583138304,
+          "internal_read_bytes": 21233664,
+          "internal_write_bytes": 5308416,
+          "conversions": 81,
+          "interface_total_bytes": 2650571776,
+          "all_counted_bytes": 2677113856,
+          "storage_pod_tx_bytes": 580508523
+        },
+        "drained_counters": {
+          "read_bytes": 1068390400,
+          "write_bytes": 1584242176,
+          "internal_read_bytes": 21233664,
+          "internal_write_bytes": 5308416,
+          "conversions": 81,
+          "interface_total_bytes": 2652632576,
+          "all_counted_bytes": 2679174656,
+          "storage_pod_tx_bytes": 581120929
+        },
+        "remote_compactions": 9,
+        "selected_remote_compactions": 9
+      }
+    ],
+    "groups": {
+      "native_original": {
+        "samples_seconds": [
+          1997.153857316007,
+          2037.0024854490184,
+          1886.7934798529604
+        ],
+        "median_seconds": 1997.153857316007,
+        "throughput_ops_s": 151.41547502324036,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "selected_remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "read_bytes": 1447276544,
+        "internal_read_bytes": 0,
+        "write_bytes": 2247997440,
+        "interface_total_bytes": 3695273984,
+        "storage_pod_tx_bytes": 1587720364,
+        "complete_read_bytes": 1447276544
+      },
+      "native_common_jvm": {
+        "samples_seconds": [
+          1946.1912952969433,
+          1828.3884418759844,
+          2153.7046352059697
+        ],
+        "median_seconds": 1946.1912952969433,
+        "throughput_ops_s": 155.3804092797881,
+        "remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "selected_remote_compactions": [
+          0,
+          0,
+          0
+        ],
+        "read_bytes": 1417617408,
+        "internal_read_bytes": 0,
+        "write_bytes": 2204823552,
+        "interface_total_bytes": 3622440960,
+        "storage_pod_tx_bytes": 1555547787,
+        "complete_read_bytes": 1417617408
+      },
+      "candidate": {
+        "samples_seconds": [
+          1333.8095872800332,
+          1349.8691629779642,
+          1333.1548815860297
+        ],
+        "median_seconds": 1333.8095872800332,
+        "throughput_ops_s": 226.7190181296179,
+        "remote_compactions": [
+          9,
+          9,
+          9
+        ],
+        "selected_remote_compactions": [
+          9,
+          9,
+          9
+        ],
+        "read_bytes": 991754752,
+        "internal_read_bytes": 63176704,
+        "write_bytes": 1584242176,
+        "interface_total_bytes": 2623962112,
+        "storage_pod_tx_bytes": 553975085,
+        "complete_read_bytes": 1066867200
+      }
+    },
+    "comparisons": {
+      "native_original": {
+        "throughput_gain_percent": 49.73305607951855,
+        "complete_read_reduction_percent": 26.28449590902787,
+        "meets_standard": true
+      },
+      "native_common_jvm": {
+        "throughput_gain_percent": 45.9122286911813,
+        "complete_read_reduction_percent": 24.7422334136574,
+        "meets_standard": true
+      }
+    },
+    "elapsed_seconds": 22524.6789290905
+  }
+}

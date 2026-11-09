@@ -2,6 +2,21 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
+
+function mountScalaFusion(server: { middlewares: import('vite').ViteDevServer['middlewares'] }, directory: string) {
+  server.middlewares.use((req, res, next) => {
+    const path = req.url?.split('?')[0]
+    if (!path || !/^\/ScalaFusion(?:\/(?:benchmark|comparison|diagnostics\/(?:compaction|engines)))?\/?$/.test(path)) return next()
+    try {
+      const html = readFileSync(new URL(`./${directory}/system-3/index.html`, import.meta.url))
+      res.setHeader('Content-Type', 'text/html; charset=utf-8')
+      res.end(html)
+    } catch (error) {
+      next(error)
+    }
+  })
+}
+
 function mountOms(server: { middlewares: import('vite').ViteDevServer['middlewares'] }, directory: string) {
   server.middlewares.use((req, res, next) => {
     const path = req.url?.split('?')[0]
@@ -24,9 +39,13 @@ function mountOms(server: { middlewares: import('vite').ViteDevServer['middlewar
 export default defineConfig({
   plugins: [vue(), {
     name: 'scheduler-portal-entry',
-    configurePreviewServer: server => mountOms(server, server.config.build.outDir),
+    configurePreviewServer(server) {
+      mountOms(server, server.config.build.outDir)
+      mountScalaFusion(server, server.config.build.outDir)
+    },
     configureServer(server) {
       mountOms(server, 'public')
+      mountScalaFusion(server, 'public')
 
       server.middlewares.use((req, res, next) => {
         const path = req.url?.split('?')[0]
