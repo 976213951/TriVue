@@ -29,7 +29,15 @@
   })
   window.addEventListener('storage', event => { if (event.key === key) apply(saved()) })
   const path = location.pathname
-  const storage = path.startsWith('/system-3/')
+  const shortStorage = /^\/ScalaFusion(?:\/|$)/.test(path)
+  const storage = shortStorage || path.startsWith('/system-3/')
+  const storageBase = shortStorage ? '/ScalaFusion' : '/system-3'
+  const benchmark = shortStorage ? storageBase : `${storageBase}/benchmark`
+  if (storage || path === '/platform' || path === '/platform/') {
+    window.addEventListener('pageshow', event => {
+      if (event.persisted) location.reload()
+    })
+  }
   let syncNavigation = () => {}
   const title = storage ? '存算分离' : path.startsWith('/scheduler/') ? '智能调度' : path.startsWith('/inference/') ? '模型推理' : ''
   const descriptions = {
@@ -40,7 +48,7 @@
     '块存储诊断': '存储引擎状态与性能指标分析',
   }
   if (title) {
-    const menus = storage ? [['/system-3/benchmark','整套系统对照'],['/system-3/diagnostics/compaction','组件与消融实验'],['/system-3/diagnostics/engines','块存储诊断']] : []
+    const menus = storage ? [[benchmark,'整套系统对照'],[`${storageBase}/diagnostics/compaction`,'组件与消融实验'],[`${storageBase}/diagnostics/engines`,'块存储诊断']] : []
     const active = menus.find(([url]) => path === url)
     const frame = document.createElement('div')
     frame.className = 'portal-frame'
@@ -73,7 +81,7 @@
     document.head.append(favicon)
     const badge = document.createElement('span')
     badge.className = 'portal-system-badge'
-    badge.textContent = storage ? 'System 03' : title === '智能调度' ? 'System 02' : 'System 04'
+    badge.textContent = storage ? 'System 04' : title === '智能调度' ? 'System 02' : 'System 04'
     frame.querySelector('[data-portal-theme]').before(badge)
     frame.querySelector('.portal-topbar-description').textContent = descriptions[active?.[1] || title] || ''
     app.before(frame)

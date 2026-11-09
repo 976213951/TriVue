@@ -51,7 +51,7 @@ npm.cmd run dev -- --port 5181
 | 故障诊断 | /oms/ |
 | 智能调度 | /scheduler/ |
 | 模型推理 | /inference/ |
-| 存算分离 | /system-3/ |
+| 存算分离 | /ScalaFusion |
 
 故障诊断在自己的应用内部使用 Vue Router，各系统之间通过 href 跳转。各系统侧栏提供返回首页入口。主题偏好使用 localStorage 的 snowapi-portal-theme 保存。
 
@@ -93,13 +93,15 @@ node scripts/prepare-portal-shell.mjs
 
 ### 存算分离
 
+整合站使用 `public/system-3/` 中的 2026-11-09 发布产物，支持标准负载与大规模负载切换。Vite 开发和预览均可打开 `/ScalaFusion`。独立部署整合站时，将 `/ScalaFusion` 及其子页面回退到 `system-3/index.html`，并保留 `/system-3/api`、`/system-3/ws` 转发。
+
+`subsystems/storage/` 中的对照页 Vue 源码来自 p3-02 的 2026-11-08 版本。下面的命令用于独立开发该版本。更新 `public/system-3/` 前应取得对应发布版本的源码或发布产物，以保留 11 月 9 日的页面功能。
+
 ```powershell
 Push-Location subsystems/storage
 npx.cmd --yes pnpm@11.19.0 install --frozen-lockfile
 npx.cmd --yes pnpm@11.19.0 --filter @research-platform/system-3 build
 Pop-Location
-Copy-Item "subsystems/storage/apps/system-3/dist/*" "public/system-3" -Recurse -Force
-node scripts/prepare-portal-shell.mjs
 ```
 
 存算分离需保留 apps 与 packages 工作区结构。首次使用此工作区的 pnpm 版本安装时，应检查锁文件兼容情况，安装失败时保留锁文件并排查错误。

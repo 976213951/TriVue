@@ -3,7 +3,7 @@ import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { IconTopologyStar3, IconMoon, IconSun, IconArrowLeft, IconArrowUpRight } from '@tabler/icons-vue'
 import { useI18n } from 'vue-i18n'
 import { systems as sourceSystems } from './config/systems'
-const systems = sourceSystems.map(system => ({ ...system, href: system.id === 'fault-diagnosis' ? '/oms/' : system.id === 'model-inference' ? '/inference/' : system.id === 'storage-compute' ? '/system-3/' : system.id === 'intelligent-scheduling' ? '/scheduler/' : system.href }))
+const systems = sourceSystems.map(system => ({ ...system, href: system.id === 'fault-diagnosis' ? '/oms/' : system.id === 'model-inference' ? '/inference/' : system.id === 'storage-compute' ? '/ScalaFusion' : system.id === 'intelligent-scheduling' ? '/scheduler/' : system.href }))
 import SystemCard from './components/SystemCard.vue'
 import CollaborationDiagram from './components/CollaborationDiagram.vue'
 import ResearchOverview from './components/ResearchOverview.vue'
